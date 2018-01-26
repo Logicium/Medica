@@ -23,7 +23,7 @@
         }
 
         function getAllJsImports(pathExtension){
-            $.ajax({async:false,url:'http://localhost:5000/imports/'+pathExtension,success:function(data){
+            $.ajax({async:false,url:'/imports/'+pathExtension,success:function(data){
                 console.log(data);$.each(data,function(){importScript(pathExtension+"/"+this.name);});}
             });
         }
@@ -34,12 +34,8 @@
 
         $.post('/readJSON',function(data){
             console.log(data);
-            if (!(Data === null || Data === 'null')){
-                data = Data
-            }
-            else{
-                Data = data;
-            }
+            if (!(Data === null || Data === 'null')){ data = Data }
+            else{ Data = data; }
             var sorted = _.sortBy(data,function (text) { return text.last_name.toLowerCase(); })
             localStorage.setItem('data',JSON.stringify(sorted));
             var H = new Home(sorted);

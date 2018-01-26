@@ -1,4 +1,5 @@
 var ProviderCard = function(data){
+
     this.card = div().addClass('provider animated fadeIn').css('padding-bottom','25px').css(Styles.click()).hover(
         function(){$(this).animate({'background-color':transparentBlack(),'color':'white'},300);},
         function(){$(this).animate({'background-color':transparent(),'color':'black'},300)}
@@ -11,6 +12,7 @@ var ProviderCard = function(data){
             col(6).append( text(selected+' Selected','black','22px').css('line-height','50px') ).addClass('selectCount')
         );
     });
+
     this.dataRow = row();
     this.side1 = col(6).removeClass('text-center').addClass('text-left');
     this.fullName = text((data['last_name']+', '+data['first_name']),'black','22px');
@@ -25,5 +27,6 @@ var ProviderCard = function(data){
             this.side1.append( this.fullName, this.email),
             this.side2.append( this.specialty, this.practice)
         )
-    )
+    );
+    
 }
